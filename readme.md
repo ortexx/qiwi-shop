@@ -41,7 +41,7 @@ app.post('/payments/bill/create/', (req, res, next) => {
         }
         
         // redirect to payment (optional)
-        res.redirect(`${qiwi.getPaymentUrl()}?shop=${qiwi.projectId}&transaction=${result.response.bill.bill_id}&other_options=...`);
+        res.redirect(qiwi.getPaymentUrl({ shop: qiwi.projectId, transaction: result.response.bill.bill_id }));
     });
 });
 
