@@ -2,7 +2,7 @@
 `npm install qiwi-shop`
 
 # About  
-Qiwi shop rest api module
+Qiwi shop rest api module (qiwi.com)
 
 # Example  
 ```js

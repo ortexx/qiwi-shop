@@ -1,7 +1,7 @@
 {
   "name": "qiwi-shop",
   "version": "1.0.0",
-  "description": "Qiwi shop rest api module",
+  "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {
     "name": "Balasyan Alexandr",
