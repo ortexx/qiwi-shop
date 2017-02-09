@@ -1,10 +1,10 @@
-# Install 
+# Install  
 `npm install qiwi-shop`
 
-# About
+# About  
 Qiwi shop rest api module
 
-# Example
+# Example  
 ```js
 const QiwiShop = require("qiwi-shop");
 const express = require("express");
@@ -47,7 +47,7 @@ app.post('/payments/bill/create/', (req, res, next) => {
 
 // notify handler 
 let successHandler = (data, callback) => {
-    // data == req.body    
+    // data === req.body    
     // save payment info in db e.t.c    
     // callback() or return promise
 };
@@ -57,50 +57,51 @@ let errorHandler = (err, meta) => {
     // operation must be synchronous or in the background 
 };
 
-let authenticationBySignature = false; // false = basic authentication
+let authenticationBySignature = false; // false == basic authentication
 
 app.post('payments/notify/handler/', qiwi.notify(successHandler, errorHandler, authenticationBySignature));
 
 ```
 
-# Description
-You can write custom notify handler, but library version includes data/authentication validation and automatically send all headers in necessary format
+# Description  
+You can write custom notify handler, but library version includes data/authentication validation and automatically send all headers in the necessary format
 
-# API
-### .constructor(projectId, apiId, apiPassword, notifyPassword)
+# API  
+### .constructor(projectId, apiId, apiPassword, notifyPassword)  
 all arguments you can find in your qiwi shop account  
 
-### .getPaymentUrl()
+### .getPaymentUrl([query])  
 returns qiwi bill creation url
 
-### .beforeCreateBill(billId, data)
+### .beforeCreateBill(billId, data)  
 called before bill creation request, but after bill hash creation
 
-### .createBill(data)
-returns promise, create bill, data options must comply with documentation
+### .createBill(data)  
+returns promise, create bill, data options must comply with documentation  
+.user and .amount is required
 
-### .getBillStatus(billId)
+### .getBillStatus(billId)  
 returns promise, get bill status
 
-### .cancelBill(billId)
+### .cancelBill(billId)  
 returns promise, cancel bill
 
-### .refundBill(billId, data)
+### .refundBill(billId, data)  
 returns promise, refund bill,  data options must comply with documentation
 
-### .getRefundStatus(billId, refundId)
+### .getRefundStatus(billId, refundId)  
 returns promise, get bill refund status
 
-### .checkNotifyAuthBasic(req)
+### .checkNotifyAuthBasic(req)  
 check notify basic authentication
 
-### .checkNotifyAuthSignature(req)
+### .checkNotifyAuthSignature(req)  
 check notify by signature
 
-### .createXml(code)
+### .createXml(code)  
 create xml string for response
 
-### .notify(fn, onError, checkSignature) 
+### .notify(fn, onError, [checkSignature])  
 qiwi notify handler, it is "connect" middleware
 
 
