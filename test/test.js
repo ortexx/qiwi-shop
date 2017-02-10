@@ -16,7 +16,7 @@ QiwiShop.prototype._createRefundHash = function() {
   return this._lastCreatedRefund = lastCreateRefundHash.apply(this, arguments);
 };
 
-describe('WalletOne:', function () {
+describe('QiwiShop:', function () {
   let projectId = '1';
   let apiId = '2';
   let apiPassword = '3';

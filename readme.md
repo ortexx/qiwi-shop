@@ -1,8 +1,8 @@
 # Install  
-`npm install qiwi-shop`
+`npm install qiwi-shop`  
 
 # About  
-Qiwi shop rest api module (qiwi.com)
+Qiwi shop rest api module (qiwi.com)  
 
 # Example  
 ```js
