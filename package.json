@@ -1,6 +1,6 @@
 {
   "name": "qiwi-shop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {

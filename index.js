@@ -92,7 +92,7 @@ class QiwiShop {
         throw new Error('Not found amount');
       }
 
-      return this.beforeCreateBill(billId, data).then(() => {
+      return Promise.resolve(this.beforeCreateBill(billId, data)).then(() => {
         return this.constructor.request(options);
       })
     })
