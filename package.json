@@ -1,32 +1,42 @@
 {
-    "name": "qiwi-shop",
-    "version": "0.0.2",
-    "description": "Qiwi shop rest api module",
-    "main": "./index.js",
-    "author": {
-        "name": "Balasyan Alexandr",
-        "email": "mywebstreet@gmail.com"
-    },
-    "keywords": [
-        "qiwi",
-        "shop",
-        "ishop",
-        "api",
-        "rest"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "request": "*",
-        "request-promise": "*",
-        "randomstring": "*",
-        "basic-auth": "*",
-        "xml": "*"
-    },
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/ortexx/qiwi-shop"
-	},
-    "engines": {
-        "node": ">=5.0.0"
-    }
+  "name": "qiwi-shop",
+  "version": "1.0.4",
+  "description": "Qiwi shop rest api module (qiwi.com)",
+  "main": "./index.js",
+  "author": {
+    "name": "Balasyan Alexandr",
+    "email": "mywebstreet@gmail.com"
+  },
+  "keywords": [
+    "qiwi",
+    "shop",
+    "ishop",
+    "api",
+    "rest"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "randomstring": "^1.1.5",
+    "basic-auth": "^1.1.0",
+    "xml": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ortexx/qiwi-shop"
+  },
+  "devDependencies": {
+    "body-parser": "^1.16.0",
+    "mocha": "^3.2.0",
+    "chai": "^3.5.0",
+    "express": "^4.14.1",
+    "supertest": "^2.0.1"
+  },
+  "engines": {
+    "node": ">=5.0.0"
+  }
 }
