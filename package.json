@@ -1,6 +1,6 @@
 {
     "name": "qiwi-shop",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Qiwi shop rest api module",
     "main": "./index.js",
     "author": {
@@ -21,12 +21,12 @@
         "randomstring": "*",
         "basic-auth": "*",
         "xml": "*"
-    }, 
-	"repository" : { 
+    },
+	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/ortexx/qiwi-shop"
 	},
     "engines": {
         "node": ">=5.0.0"
-    }	
+    }
 }
