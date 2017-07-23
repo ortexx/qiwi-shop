@@ -5,19 +5,27 @@
 Qiwi shop rest api module (qiwi.com)  
 
 # Example  
+## Dependencies
+
 ```js
 const QiwiShop = require("qiwi-shop");
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
+app.use(bodyParser.json());
+```
+
+## Creation of bills
+
+```js
 let projectId = "0000001"; // shop id
 let apiId = "0000000001"; // api id
 let apiPassword = "api"; // api password
 let notifyPassword = "notify"; // notify password
 
+const inFiveDays = new Date().getTime() + 1000 * 60 * 60 * 24 * 5;
 const qiwi = new QiwiShop(projectId, apiId, apiPassword, notifyPassword);
-
-// Create new bill
 
 // this action is optional
 qiwi.beforeCreateBill = function(billId, data) {
@@ -25,16 +33,15 @@ qiwi.beforeCreateBill = function(billId, data) {
     // you may return promise
 }
 
-// the creation request
 app.post('/payments/bill/create/', (req, res, next) => {    
     qiwi.createBill({
         user: 'tel:+7910100100',
         amount: '10',
-        ccy: 'RUB', // optional
-        comment: 'recharge', // optional
-        lifetime: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 5).toISOString(), // optional
-        pay_source: 'qw', // optional
-        prv_name: 'example.com' // optional
+        ccy: 'RUB', 
+        comment: 'recharge',
+        lifetime: new Date(inFiveDays).toISOString(),
+        pay_source: 'qw',
+        prv_name: 'example.com' 
     }).then((result) => {
         if(!result || !result.response || result.response.result_code != 0) {
             throw new Error('Qiwi bill creation fail');
@@ -44,7 +51,11 @@ app.post('/payments/bill/create/', (req, res, next) => {
         res.redirect(qiwi.getPaymentUrl({ shop: qiwi.projectId, transaction: result.response.bill.bill_id }));
     });
 });
+```
 
+## Handling a notification
+
+```js
 // notification handler 
 let successHandler = (data, callback) => {
     // data === req.body    
