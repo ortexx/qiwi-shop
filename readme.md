@@ -19,10 +19,10 @@ app.use(bodyParser.json());
 ## Creation of bills
 
 ```js
-let projectId = "0000001"; // shop id
-let apiId = "0000000001"; // api id
-let apiPassword = "api"; // api password
-let notifyPassword = "notify"; // notify password
+const projectId = "0000001"; // shop id
+const apiId = "0000000001"; // api id
+const apiPassword = "api"; // api password
+const notifyPassword = "notify"; // notify password
 
 const inFiveDays = new Date().getTime() + 1000 * 60 * 60 * 24 * 5;
 const qiwi = new QiwiShop(projectId, apiId, apiPassword, notifyPassword);
@@ -57,13 +57,13 @@ app.post('/payments/bill/create/', (req, res, next) => {
 
 ```js
 // notification handler 
-let successHandler = (data, callback) => {
+const successHandler = (data, callback) => {
     // data === req.body    
     // save payment info or something else in a db e.t.c    
     // callback() or return promise
 };
 
-let errorHandler = (err, meta) => {
+const errorHandler = (err, meta) => {
     // you can save something to a file, db e.t.c.
     // the operation must be synchronous or in the background 
 };
