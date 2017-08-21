@@ -12,11 +12,11 @@ class QiwiShop {
     return request(options);
   }
 
-  constructor(projectId, apiId, apiPassword, notifyPassword) {
+  constructor(projectId, apiId, apiPassword, notificationPassword) {
     this.projectId = projectId;
     this.apiId = apiId;
     this.apiPassword = apiPassword;
-    this.notifyPassword = notifyPassword;
+    this.notificationPassword = notificationPassword;
 
     if (!projectId) {
       throw new Error('projectId is missing');
@@ -30,13 +30,13 @@ class QiwiShop {
       throw new Error('apiPassword is missing');
     }
 
-    if (!notifyPassword) {
-      throw new Error('notifyPassword is missing');
+    if (!notificationPassword) {
+      throw new Error('notificationPassword is missing');
     }
   }
 
   _createBillHash() {
-    let hashData = this.projectId + this.apiId + this.notifyPassword + new Date().toString();
+    let hashData = this.projectId + this.apiId + this.notificationPassword + new Date().toString();
 
     return crypto.createHash('md5').update(hashData).digest("hex");
   }
@@ -45,8 +45,8 @@ class QiwiShop {
     return randomstring.generate(9);
   }
 
-  _createNotifyHash(params) {
-    return crypto.createHmac('sha1', this.notifyPassword).update(params).digest("base64");
+  _createNotificationHash(params) {
+    return crypto.createHmac('sha1', this.notificationPassword).update(params).digest("base64");
   }
 
   _setDefaultRequestOptions(options) {
@@ -94,8 +94,8 @@ class QiwiShop {
 
       return Promise.resolve(this.beforeCreateBill(billId, data)).then(() => {
         return this.constructor.request(options);
-      })
-    })
+      });
+    });
   }
 
   getPaymentUrl(query) {
@@ -153,13 +153,13 @@ class QiwiShop {
     return this.constructor.request(options);
   }
 
-  checkNotifyAuthBasic(req) {
+  checkNotificationAuthBasic(req) {
     let data = basicAuth(req) || {};
 
-    return this.notifyPassword && this.projectId && data.name == this.projectId && data.pass == this.notifyPassword;
+    return this.notificationPassword && this.projectId && data.name == this.projectId && data.pass == this.notificationPassword;
   }
 
-  checkNotifyAuthSignature(req) {
+  checkNotificationAuthSignature(req) {
     let data = req.body || {};
     let values = [];
     let params, hash;
@@ -169,7 +169,7 @@ class QiwiShop {
     });
 
     params = values.join('|');
-    hash = this._createNotifyHash(params);
+    hash = this._createNotificationHash(params);
 
     return hash && (req.get('X-Api-Signature') == hash);
   }
@@ -187,12 +187,12 @@ class QiwiShop {
     return (req, res) => {
       let checkAuth;
 
-      let ok = () => {
+      const ok = () => {
         res.set('Content-Type', 'text/xml');
         return res.send(this.createXml(0));
       };
 
-      let fail = (err, code, meta) => {
+      const fail = (err, code, meta) => {
         res.set('Content-Type', 'text/xml');
         res.status(500);
 
@@ -204,10 +204,10 @@ class QiwiShop {
       };
 
       if (checkSignature) {
-        checkAuth = this.checkNotifyAuthSignature(req);
+        checkAuth = this.checkNotificationAuthSignature(req);
       }
       else {
-        checkAuth = this.checkNotifyAuthBasic(req);
+        checkAuth = this.checkNotificationAuthBasic(req);
       }
 
       if (!checkAuth) {
@@ -238,9 +238,9 @@ class QiwiShop {
           ok();
         }).catch((err) => {
           fail(err);
-        })
+        });
       }
-    }
+    };
   }
 }
 

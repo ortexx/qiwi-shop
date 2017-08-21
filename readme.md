@@ -22,10 +22,10 @@ app.use(bodyParser.json());
 const projectId = "0000001"; // shop id
 const apiId = "0000000001"; // api id
 const apiPassword = "api"; // api password
-const notifyPassword = "notify"; // notify password
+const notificationPassword = "notification"; // notification password
 
 const inFiveDays = new Date().getTime() + 1000 * 60 * 60 * 24 * 5;
-const qiwi = new QiwiShop(projectId, apiId, apiPassword, notifyPassword);
+const qiwi = new QiwiShop(projectId, apiId, apiPassword, notificationPassword);
 
 // this action is optional
 qiwi.beforeCreateBill = function(billId, data) {
@@ -78,7 +78,7 @@ app.post('payments/notification/', qiwi.notify(successHandler, errorHandler, aut
 You can write custom notification handler, but library version includes data/authentication validation and automatically send all headers in the necessary format
 
 # API  
-### .constructor(projectId, apiId, apiPassword, notifyPassword)  
+### .constructor(projectId, apiId, apiPassword, notificationPassword)  
 you can find all arguments in your qiwi shop account  
 
 ### .getPaymentUrl([query])  
@@ -103,10 +103,10 @@ returns promise, refunds a bill,  data options must comply with documentation
 ### .getRefundStatus(billId, refundId)  
 returns promise, gets a bill refund status
 
-### .checkNotifyAuthBasic(req)  
+### .checkNotificationAuthBasic(req)  
 checks a notification by basic authentication
 
-### .checkNotifyAuthSignature(req)  
+### .checkNotificationAuthSignature(req)  
 checks a notification by signature
 
 ### .createXml(code)  
