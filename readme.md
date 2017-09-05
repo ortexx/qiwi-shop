@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 
 ```js
 const projectId = "0000001"; // shop id
-const apiId = "0000000001"; // api id
+const apiId = "000000001"; // api id
 const apiPassword = "api"; // api password
 const notificationPassword = "notification"; // notification password
 
