@@ -29,8 +29,8 @@ const qiwi = new QiwiShop(projectId, apiId, apiPassword, notificationPassword);
 
 // this action is optional
 qiwi.beforeCreateBill = function(billId, data) {
-    // you can save an information to db before request e.t.c.
-    // you may return promise
+    // you can save an information to db, before the request e.t.c.
+    // you can return a promise
 }
 
 app.post('/payments/bill/create/', (req, res, next) => {    
@@ -59,7 +59,7 @@ app.post('/payments/bill/create/', (req, res, next) => {
 // notification handler 
 const successHandler = (data, callback) => {
     // data === req.body    
-    // save payment info or something else in a db e.t.c    
+    // save payment info or something else to db e.t.c    
     // callback() or return promise
 };
 
@@ -75,7 +75,7 @@ app.post('payments/notification/', qiwi.notify(successHandler, errorHandler, aut
 ```
 
 # Description  
-You can write custom notification handler, but library version includes data/authentication validation and automatically send all headers in the necessary format
+You can write a custom notification handler, but the library version includes data/authentication validation and automatically send all headers in the necessary format
 
 # API  
 ### .constructor(projectId, apiId, apiPassword, notificationPassword)  
