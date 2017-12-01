@@ -107,7 +107,7 @@ returns promise, gets a bill refund status
 checks a notification by basic authentication
 
 ### .checkNotificationAuthSignature(req)  
-checks a notification by signature
+checks a notification by a signature
 
 ### .createXml(code)  
 creates xml string for response
