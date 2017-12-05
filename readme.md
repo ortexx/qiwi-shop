@@ -104,7 +104,7 @@ returns promise, refunds a bill,  data options must comply with documentation
 returns promise, gets a bill refund status
 
 ### .checkNotificationAuthBasic(req)  
-checks a notification by basic authentication
+checks a notification by a basic authentication
 
 ### .checkNotificationAuthSignature(req)  
 checks a notification by a signature
