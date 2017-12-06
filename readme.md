@@ -92,16 +92,16 @@ returns promise, create a bill, data options must comply with documentation
 .user and .amount is required
 
 ### .getBillStatus(billId)  
-returns promise, get a bill status
+returns a promise, get a bill status
 
 ### .cancelBill(billId)  
-returns promise, cancel a bill
+returns a promise, cancel a bill
 
 ### .refundBill(billId, data)  
-returns promise, refunds a bill,  data options must comply with documentation
+returns a promise, refunds a bill,  data options must comply with documentation
 
 ### .getRefundStatus(billId, refundId)  
-returns promise, gets a bill refund status
+returns a promise, gets a bill refund status
 
 ### .checkNotificationAuthBasic(req)  
 checks a notification by a basic authentication
