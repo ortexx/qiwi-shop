@@ -75,7 +75,7 @@ app.post('payments/notification/', qiwi.notify(successHandler, errorHandler, aut
 ```
 
 # Description  
-You can write a custom notification handler, but the library version includes data/authentication validation and automatically send all headers in the necessary format
+You can write a custom notification handler, but the library version includes a data/authentication validation and automatically send all headers in the necessary format
 
 # API  
 ### .constructor(projectId, apiId, apiPassword, notificationPassword)  
