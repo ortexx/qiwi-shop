@@ -110,7 +110,7 @@ checks a notification by a basic authentication
 checks a notification by a signature
 
 ### .createXml(code)  
-creates xml string for response
+creates xml string for the response
 
 ### .notify(fn, onError, [checkSignature])  
 qiwi notification handler, it is "connect" middleware
