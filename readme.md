@@ -71,7 +71,6 @@ const errorHandler = (err, meta) => {
 let authenticationBySignature = false; // false == basic authentication
 
 app.post('payments/notification/', qiwi.notify(successHandler, errorHandler, authenticationBySignature));
-
 ```
 
 # Description  
