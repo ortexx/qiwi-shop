@@ -29,7 +29,7 @@ const qiwi = new QiwiShop(projectId, apiId, apiPassword, notificationPassword);
 
 // this action is optional
 qiwi.beforeCreateBill = function(billId, data) {
-    // you can save an information to db, before the request e.t.c.
+    // you can save some information to db, before the request e.t.c.
     // you can return a promise
 }
 
