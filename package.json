@@ -1,6 +1,6 @@
 {
   "name": "qiwi-shop",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {
@@ -30,10 +30,10 @@
     "url": "https://github.com/ortexx/qiwi-shop"
   },
   "devDependencies": {
-    "body-parser": "^1.16.0",
-    "mocha": "^3.2.0",
+    "body-parser": "^1.19.0",
     "chai": "^3.5.0",
-    "express": "^4.14.1",
+    "express": "^4.17.1",
+    "mocha": "^6.2.1",
     "supertest": "^2.0.1"
   },
   "engines": {
