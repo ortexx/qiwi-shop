@@ -1,6 +1,6 @@
 {
   "name": "qiwi-shop",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {
@@ -33,7 +33,7 @@
     "body-parser": "^1.19.0",
     "chai": "^3.5.0",
     "express": "^4.17.1",
-    "mocha": "^6.2.1",
+    "mocha": "^7.1.1",
     "supertest": "^4.0.1"
   },
   "engines": {
