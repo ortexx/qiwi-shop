@@ -28,28 +28,31 @@ const inFiveDays = new Date().getTime() + 1000 * 60 * 60 * 24 * 5;
 const qiwi = new QiwiShop(projectId, apiId, apiPassword, notificationPassword);
 
 // this action is optional
-qiwi.beforeCreateBill = function(billId, data) {
-    // you can save some information to db, before the request e.t.c.
-    // you can return a promise
+qiwi.beforeCreateBill = function (billId, data) {
+  // you can save some information to db before the request e.t.c.
+  // you can return a promise
 }
 
 app.post('/payments/bill/create/', (req, res, next) => {    
-    qiwi.createBill({
-        user: 'tel:+7910100100',
-        amount: '10',
-        ccy: 'RUB', 
-        comment: 'recharge',
-        lifetime: new Date(inFiveDays).toISOString(),
-        pay_source: 'qw',
-        prv_name: 'example.com' 
-    }).then((result) => {
-        if(!result || !result.response || result.response.result_code != 0) {
-            throw new Error('Qiwi bill creation fail');
-        }
-        
-        // redirect to payment (optional)
-        res.redirect(qiwi.getPaymentUrl({ shop: qiwi.projectId, transaction: result.response.bill.bill_id }));
-    });
+  qiwi.createBill({
+    user: 'tel:+7910100100',
+    amount: '10',
+    ccy: 'RUB', 
+    comment: 'recharge',
+    lifetime: new Date(inFiveDays).toISOString(),
+    pay_source: 'qw',
+    prv_name: 'example.com' 
+  }).then((result) => {
+    if(!result || !result.response || result.response.result_code != 0) {
+        throw new Error('Qiwi bill creation fail');
+    }
+    
+    // redirect to payment (optional)
+    res.redirect(qiwi.getPaymentUrl({ 
+      shop: qiwi.projectId, 
+      transaction: result.response.bill.bill_id 
+    }));
+  });
 });
 ```
 
@@ -84,7 +87,7 @@ you can find all arguments in your qiwi shop account
 returns qiwi bill creation url
 
 ### .beforeCreateBill(billId, data)  
-will be called before a bill creation request, but after a hash creation
+will be called before the bill creation request, but after the hash creation
 
 ### .createBill(data)  
 returns promise, create a bill, data options must comply with documentation  

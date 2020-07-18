@@ -1,6 +1,6 @@
 {
   "name": "qiwi-shop",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {
@@ -21,8 +21,8 @@
   "dependencies": {
     "basic-auth": "^1.1.0",
     "randomstring": "^1.1.5",
-    "request": "^2.88.0",
-    "request-promise": "^4.2.4",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
     "xml": "^1.0.1"
   },
   "repository": {
@@ -33,7 +33,7 @@
     "body-parser": "^1.19.0",
     "chai": "^3.5.0",
     "express": "^4.17.1",
-    "mocha": "^7.1.1",
+    "mocha": "^7.2.0",
     "supertest": "^4.0.1"
   },
   "engines": {
