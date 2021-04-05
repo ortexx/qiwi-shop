@@ -1,10 +1,10 @@
 {
   "name": "qiwi-shop",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Qiwi shop rest api module (qiwi.com)",
   "main": "./index.js",
   "author": {
-    "name": "Balasyan Alexandr",
+    "name": "Alexander Balasyan",
     "email": "mywebstreet@gmail.com"
   },
   "keywords": [
