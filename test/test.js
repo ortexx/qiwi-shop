@@ -4,7 +4,6 @@ const assert = require('chai').assert;
 const QiwiShop = require('../index');
 const express = require('express');
 const request = require('supertest');
-const bodyParser = require('body-parser');
 
 QiwiShop.request = function(options) {
   return Promise.resolve(options)
@@ -132,7 +131,7 @@ describe('QiwiShop:', function () {
         test: true
       };
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify(() => {}, (err, meta) => {
         (meta.type != 'basic') && (error = new Error('basic authentication error checking was failed'));
@@ -153,7 +152,7 @@ describe('QiwiShop:', function () {
       let app = express();
       let error;
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify(() => {}, (err, meta) => {
         (meta.type != 'signature') && (error = new Error('signature authentication error checking was failed'));
@@ -174,7 +173,7 @@ describe('QiwiShop:', function () {
     it('check basic authentication success', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify((body, callback) => {
         assert.equal(JSON.stringify(body), JSON.stringify(data));
@@ -196,7 +195,7 @@ describe('QiwiShop:', function () {
     it('check signature authentication success', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify(() => {
         return Promise.resolve();
@@ -214,7 +213,7 @@ describe('QiwiShop:', function () {
     it('check success request with callback error', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify((body, callback) => {
         callback(new Error('success'));
@@ -231,7 +230,7 @@ describe('QiwiShop:', function () {
     it('check success request with promise error', function (done) {
       let app = express();
 
-      app.use(bodyParser.json());
+      app.use(express.json());
 
       app.post('/notify', qiwi.notify(() => {
         return Promise.reject(new Error('success'));
